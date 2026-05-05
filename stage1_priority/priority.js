@@ -19,19 +19,17 @@ async function getTop10Notifications() {
 
         const rawData = await response.json();
         
-        // Let's print the raw data to the terminal just to see its exact structure
         console.log("Raw Data from API:", rawData);
 
         await Log("backend", "debug", "utils", `Successfully fetched data from notifications API.`);
 
-        // FIX 2: Safely extract the array from the response object
         let notificationsArray = [];
         if (Array.isArray(rawData)) {
             notificationsArray = rawData;
         } else if (rawData && Array.isArray(rawData.notifications)) {
-            notificationsArray = rawData.notifications; // if it's wrapped in { notifications: [...] }
+            notificationsArray = rawData.notifications;
         } else if (rawData && Array.isArray(rawData.data)) {
-            notificationsArray = rawData.data; // if it's wrapped in { data: [...] }
+            notificationsArray = rawData.data;
         } else {
             console.error("Could not find an array in the API response.");
             return;
