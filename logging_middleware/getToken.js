@@ -22,7 +22,7 @@
            }
 
            const data = await response.json();
-           console.log("\n✅ SUCCESS! Here is your token. Copy the text below:\n");
+           console.log("\n SUCCESS! Here is your token. Copy the text below:\n");
            console.log(data.access_token);
            console.log("\n");
        } catch (error) {
